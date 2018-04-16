@@ -51,9 +51,9 @@ public class AccountTest {
     @Test
     public void accountCustomerTest() {
         Account account = new Account();
-        account.setCustomer(new Customer());
-        Customer expected = new Customer();
-        Assert.assertEquals(expected.getClass(), account.getCustomer().getClass());
+        account.setCustomerId(1);
+        Integer expected = 1;
+        Assert.assertEquals(expected, account.getCustomerId());
     }
 
 }

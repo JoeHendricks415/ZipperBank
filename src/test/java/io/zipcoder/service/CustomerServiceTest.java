@@ -12,6 +12,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import util.BaseServiceTest;
 
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -65,7 +67,8 @@ public class CustomerServiceTest extends BaseServiceTest<Customer> {
     @Test
     public void testDeleteCustomerById() {
         customerService.deleteCustomerById(entityId);
-        verify(customerRepository).delete(entityId);
+        verify(customerRepository, times(1))
+                .delete(eq(entityId));
     }
 
 }

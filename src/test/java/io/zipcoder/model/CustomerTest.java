@@ -1,6 +1,5 @@
 package io.zipcoder.model;
 
-import io.zipcoder.bank.model.Address;
 import io.zipcoder.bank.model.Customer;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,10 +33,9 @@ public class CustomerTest {
     @Test
     public void customerAddressTest() {
         Customer customer = new Customer();
-        Address customerAddress = new Address();
-        customer.setAddress(customerAddress);
-        Address expected = new Address();
-        Assert.assertEquals(expected.getClass(), customer.getAddress().getClass());
+        customer.setAddressId(1);
+        Integer expected = 1;
+        Assert.assertEquals(expected.getClass(), customer.getAddressId().getClass());
     }
 
 }

@@ -13,6 +13,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import util.BaseServiceTest;
 
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
@@ -60,13 +62,17 @@ public class BillServiceTest extends BaseServiceTest<Bill> {
     @Test
     public void testDeleteBillByBillId() {
         billService.deleteBillByBillId(entityId);
-        verify(billRepository).delete(entityId);
+        verify(billRepository, times(1))
+                .delete(eq(entityId));
     }
 
-    @Test
-    public void testFindBillsByAccount() {
-        // How do we test this lmao
-    }
+//    @Test
+//    public void testFindBillsByAccount() {
+//        when(billRepository.findByAccount_id(entityId))
+//                .thenReturn(entityCollection);
+//        returnedEntityCollection = billService.findAllBillsByAccount(entityId);
+//        Assert.assertEquals(entityNotReturnedMessage, entityCollection, returnedEntityCollection);
+//    }
 
 
 }

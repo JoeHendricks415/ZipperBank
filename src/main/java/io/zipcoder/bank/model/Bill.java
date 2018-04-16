@@ -40,6 +40,7 @@ public class Bill {
     @Column(name = "ACCOUNT_ID")
     private Integer account_id;
 
+
     public Integer getId() {
         return Id;
     }

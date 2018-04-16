@@ -31,7 +31,11 @@ public class Account extends BaseEntity {
     @Column(name = "BALANCE")
     private Double balance;
 
-    @Column(name = "CUSTOMER")
+    @Column(name = "CUSTOMER_ID")
+    private Integer customerId;
+
+    @ManyToOne
+    @JoinColumn(name = "CUSTOMER_ID", insertable = false, updatable = false)
     private Customer customer;
 
     public Account(){
@@ -85,12 +89,12 @@ public class Account extends BaseEntity {
         this.type = type;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
 }

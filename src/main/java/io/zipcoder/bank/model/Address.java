@@ -1,6 +1,7 @@
 package io.zipcoder.bank.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Address {
@@ -24,6 +25,9 @@ public class Address {
 
     @Column(name = "ZIP")
     private String zip;
+
+    @OneToMany(mappedBy = "address")
+    private Collection<Customer> customers;
 
 
     public Integer getId() {
@@ -72,6 +76,14 @@ public class Address {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public Collection<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Collection<Customer> customers) {
+        this.customers = customers;
     }
 
 }

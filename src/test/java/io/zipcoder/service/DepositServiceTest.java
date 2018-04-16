@@ -12,6 +12,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import util.BaseServiceTest;
 
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -57,7 +59,8 @@ public class DepositServiceTest extends BaseServiceTest<Deposit> {
     @Test
     public void testDeleteDepositById() {
         depositService.deleteDepositByDepositId(entityId);
-        verify(depositRepository).delete(entityId);
+        verify(depositRepository, times(1))
+                .delete(eq(entityId));
     }
 
 }

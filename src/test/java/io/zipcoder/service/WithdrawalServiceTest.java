@@ -11,6 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import util.BaseServiceTest;
+
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import static org.mockito.Mockito.when;
@@ -64,9 +67,9 @@ public class WithdrawalServiceTest extends BaseServiceTest<Withdrawal> {
 
     @Test
     public void testDeleteWithdrawalById() {
-        // Betta be able to delete dat account boi
         withdrawalService.deleteWithdrawalByWithdrawalId(entityId);
-        verify(withdrawalRepo).delete(entityId);
+        verify(withdrawalRepo, times(1))
+                .delete(eq(entityId));
     }
 
 

@@ -1,7 +1,7 @@
 package io.zipcoder.bank.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Collection;
 
 @Entity
 public class Customer {
@@ -17,6 +17,14 @@ public class Customer {
     @Column(name = "LAST_NAME")
     private String last_name;
 
+    @Column(name = "ADDRESS_ID")
+    private Integer addressId;
+
+    @OneToMany(mappedBy = "customer")
+    private Collection<Account> accounts;
+
+    @ManyToOne
+    @JoinColumn(name = "ADDRESS_ID", insertable = false, updatable = false)
     private Address address;
 
 
@@ -44,12 +52,20 @@ public class Customer {
         this.last_name = last_name;
     }
 
-    public Address getAddress() {
-        return address;
+    public Integer getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
+    public Collection<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Collection<Account> accounts) {
+        this.accounts = accounts;
     }
 
 }
